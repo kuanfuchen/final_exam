@@ -71,7 +71,8 @@ const postsContrllers = {
 		}else{
 			const userInfo= {
 				id: _id,
-				useId:req.user.id
+				useId:req.user.id,
+				like:true
 			}
 			handleSuccess(res,userInfo)
 		}
@@ -87,7 +88,8 @@ const postsContrllers = {
 		}else{
 			const userInfo= {
 				id: _id,
-				useId:req.user.id
+				useId:req.user.id,
+				like:false
 			}	
 			handleSuccess(res,userInfo,201)
 		}
