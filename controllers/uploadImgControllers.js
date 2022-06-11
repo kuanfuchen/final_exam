@@ -3,6 +3,7 @@ const errorField = require('../severices/errorField');
 const handleSuccess = require('../severices/handleSuccess');
 const imageSize = require('image-size');
 const { ImgurClient } = require('imgur');
+const User = require('../models/usersModel');
 
 const uploadImgControllers = {
   postImg: handleErrorAsync(async(req,res,next)=>{
@@ -34,7 +35,13 @@ const uploadImgControllers = {
       type:'base64',
       album: process.env.IMGUR_ALBUM_ID
     });
-    handleSuccess(res, response.data.link, 200)
+    const userId = req.user.id;
+    if(!userId)return errorField(401,'登入者狀態有誤',next);
+    const updateUserPhoto = {
+      photo: response.data.link
+    };
+    const personalInfo = await User.findByIdAndUpdate(userId, updateUserPhoto, {new:true, runValidators: true});
+    handleSuccess(res, personalInfo, 200)
   })
 }
 module.exports = uploadImgControllers;

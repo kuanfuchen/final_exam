@@ -74,7 +74,6 @@ const usersContrllers = {
 		if(errMessage.length>0) return errorField(401, errMessage, next);
 		const updateInfo = {
 			sex,
-			photo,
 			name,
 		};
 		const personalInfo = await User.findByIdAndUpdate(req.user.id, updateInfo, {new:true, runValidators: true});
