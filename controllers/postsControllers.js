@@ -36,8 +36,7 @@ const postsContrllers = {
 	deleteOnePosts: handleErrorAsync(async(req, res, next)=>{
 		const id = req.params.id;
 		const deleteMessage = await Post.findByIdAndDelete(id);
-		await Comment.findByIdAndDelete(id)
-
+		await Comment.deleteMany({post:id})
 		if(deleteMessage !== null){
 			handleSuccess(res,'刪除成功')
 		}else{
@@ -102,7 +101,7 @@ const postsContrllers = {
 		const comment = req.body.comment.trim();
 		if(comment === '' || comment === null){
 			return errorField(401,'填入回文資料',next)
-		}
+		};
 		const data = {
 			user,
 			post,
