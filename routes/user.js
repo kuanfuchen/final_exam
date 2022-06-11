@@ -13,7 +13,7 @@ router.post('/sign_in',(req,res,next)=>{
   usersController.userSignIn(req,res,next)
 });
 router.post('/updata_password', isAuth,(req,res,next)=>{
-  usersController.userUpdatePassword(req,res,next)
+  usersController.userUpdatepassword(req,res,next)
 });
 router.patch('/profile', isAuth, (req,res,next)=>{
   usersController.userPatchUpdatePersonalInfo(req, res, next);

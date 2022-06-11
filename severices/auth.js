@@ -9,7 +9,7 @@ const generateJWT = (user, codeStatus, res)=>{
   const token = jwt.sign({id},process.env.JWT_SECRET,{
     expiresIn: process.env.JWT_EXPIRES_DAY
   });
-  user.passward = undefined;
+  user.password = undefined;
   const data = {
     name: user.name,
     token,
