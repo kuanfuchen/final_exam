@@ -42,14 +42,6 @@ const postsContrllers = {
 			errorField(400, '貼文重複刪除', next)
 		}
 	}),
-	deleteManyPosts: handleErrorAsync(async(req, res, next)=>{
-			if(req.originalUrl==='/posts'){
-				await Post.deleteMany({});
-				handleSuccess(res,[]);
-			}else{
-				errorField(400,'刪除資料請補上id', next)
-			}
-	}),
 	updataPosts: handleErrorAsync(async(req,res,next)=>{
 		const id = req.params.id;
 		const info = req.body;

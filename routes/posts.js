@@ -13,9 +13,6 @@ router.post('/post', isAuth,(req, res, next)=>{
 router.delete('/post/:id', isAuth,(req,res,next)=>{
   postsController.deleteOnePosts(req,res,next)
 });
-router.delete('/posts',isAuth,(req, res,next)=>{
-  postsController.deleteManyPosts(req,res,next)
-});
 router.patch('/post/:id', isAuth,(req, res, next)=>{
   postsController.updataPosts(req,res,next)
 });
