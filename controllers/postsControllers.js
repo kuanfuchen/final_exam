@@ -36,6 +36,8 @@ const postsContrllers = {
 	deleteOnePosts: handleErrorAsync(async(req, res, next)=>{
 		const id = req.params.id;
 		const deleteMessage = await Post.findByIdAndDelete(id);
+		await Comment.findByIdAndDelete(id)
+
 		if(deleteMessage !== null){
 			handleSuccess(res,'刪除成功')
 		}else{
