@@ -1,0 +1,638 @@
+{
+	"info": {
+		"_postman_id": "00fa5aa2-3a90-439d-910e-fb6feeb32582",
+		"name": "第8周作業 _heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5793298"
+	},
+	"item": [
+		{
+			"name": "登入註冊",
+			"item": [
+				{
+					"name": "註冊會員",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"kate\",\r\n    \"password\":\"12345678\",\r\n    \"confirmpassword\":\"123456\",\r\n    \"email\":\"kateail.com\",\r\n    \"sex\":\"Femle\",\r\n    \"photo\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{herokuUrl}}/users/sign_up",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"users",
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "登入會員",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"test2@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{herokuUrl}}/users/sign_in",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"users",
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "個人檔案",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{herokuUrl}}/users/profile",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "變更密碼",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"11112222\",\r\n    \"confirmpassword\": \"11112222\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{herokuUrl}}/users/updata_password",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"users",
+								"updata_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "變更個人檔案",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"test4\",\r\n    \"sex\":\"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{herokuUrl}}/users/profile",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "發文",
+			"item": [
+				{
+					"name": "取得所有貼文",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{herokuUrl}}/posts",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "上傳貼文",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\":\"\",\r\n    \"content\":\"吃蝦好日子\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{herokuUrl}}/post",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "變更單一貼文內容",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"image\":\"\",\r\n    \"content\":\"484今天禮拜六\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{herokuUrl}}/post/62a43def4486a1f303f610a0",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"post",
+								"62a43def4486a1f303f610a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除單一貼文",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{herokuUrl}}/post/{{postId}}",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"post",
+								"{{postId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "貼文給個讚",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{herokuUrl}}/post/{{postId}}/likes",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"post",
+								"{{postId}}",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除貼文讚",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{herokuUrl}}/post/{{postId}}/likes",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"post",
+								"{{postId}}",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得單一貼文",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{herokuUrl}}/post/62a43def4486a1f303f610a0",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"post",
+								"62a43def4486a1f303f610a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得個人所有貼文",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{herokuUrl}}/post/user/62a433e79a749d4981343663",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"post",
+								"user",
+								"62a433e79a749d4981343663"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "留言",
+			"item": [
+				{
+					"name": "單一貼文增加留言",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\":\"邱母老虎\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{herokuUrl}}/post/{{postId}}/comment",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"post",
+								"{{postId}}",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "按讚追蹤",
+			"item": [
+				{
+					"name": "個人按讚列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{herokuUrl}}/users/getLikesList",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"users",
+								"getLikesList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "加入追蹤",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{herokuUrl}}/users/62a441f0ff7d3b033c084a73/follow",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"users",
+								"62a441f0ff7d3b033c084a73",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "移除追蹤",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{herokuUrl}}/users/62a441f0ff7d3b033c084a73/unfollow",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"users",
+								"62a441f0ff7d3b033c084a73",
+								"unfollow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得追蹤列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{herokuUrl}}/users/following",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"users",
+								"following"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "上傳圖片",
+			"item": [
+				{
+					"name": "上傳個人圖片(1:1限制)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/KFC/Desktop/1-1.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{herokuUrl}}/uploadImg/avatar",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"uploadImg",
+								"avatar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "上傳圖片",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"type": "file",
+									"src": "/C:/Users/KFC/Desktop/d5519893.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{herokuUrl}}/uploadImg",
+							"host": [
+								"{{herokuUrl}}"
+							],
+							"path": [
+								"uploadImg"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
